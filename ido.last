@@ -1,0 +1,37 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/arpher/Documents/demos/" . ".git/")
+ ("/home/arpher/Documents/" . "demos/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ 
+)
+
+;; ----- ido-work-file-list -----
+(
+ 
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/arpher/Documents/demos/.git/" (22782 38190 271001 894000) "../" "refs/" "hooks/" "./" "info/" "logs/" "COMMIT_EDITMSG" "HEAD" "branches/" "objects/" "config" "index" "description")
+
+ ("/home/arpher/Documents/demos/" (22782 38166 944080 424000) "../" "./" "json.json" ".git/" "org.org~" "js.js" "py.py~" "org.org" "html.html~" "conf.conf" "c.c" "html.html" "hello.php~" "demo.py~" "php.php" "md.md" "py.py" "php.php~")
+
+ ("/home/arpher/Documents/" (22780 53736 875974 753000) "../" "./" "el/" "demos/" "study/" "org/" "myetc/" "php/" "js/" ".emacs.d/" "python/")
+
+ ("/home/arpher/Documents/php/" (22774 1799 482966 304000) "../" "./" "learnlaravel5/" "cccc/")
+
+ ("/home/arpher/Documents/php/learnlaravel5/" (22776 30046 938158 411000) "../" "./" "app/" "tests/" "gulpfile.js" "phpunit.xml" "composer.lock" "database/" ".git/" "readme.md" "package.json" ".gitattributes" "server.php" ".gitignore" "storage/" "composer.json" "public/" "artisan" ".env.example" "config/" "bootstrap/" "resources/")
+
+ ("/home/arpher/Documents/php/learnlaravel5/app/" (22774 3686 163254 629000) "../" "Contracts/" "./" "Events/" "Providers/" "Listeners/" "User.php" "Policies/" "Models/" "Services/" "Http/" "Exceptions/" "Console/" "Jobs/")
+
+ ("/home/arpher/Documents/php/learnlaravel5/app/Models/" (22774 1812 979434 195000) "../" "UserAccount.php" "./" "Article.php" "Comment.php" "Permission.php" "Country.php" "Video.php" "Role.php" "Post.php")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

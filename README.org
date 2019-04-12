@@ -1,0 +1,15 @@
+** Emacs版本
+Emacs 24.5.1 (Org mode 8.2.10)
+** 安装
+#+BEGIN_SRC sh
+git clone git@github.com:kyronbao/.emacs.d.git
+#+END_SRC
+Emacs配置本地安装位置：~/.emacs.d/
+安装后必需的重要文件列表如下：
+#+BEGIN_SRC 
+init.el
+myinit.el
+myinit.org
+myfiles/
+#+END_SRC
+其他为相应的包扩展文件

@@ -1,0 +1,46 @@
+;;; Automatically generated on Tue Apr 25 00:21:03 2017
+;;; Invoked by arpher@ThinkPad using 24.5.1
+(setq-default kill-ring '("(use-package magit
+  :config
+  
+  (setq magit-completing-read-function 'ivy-completing-read)
+  
+  :bind
+  ;; Magic
+  (\"C-x g s\" . magit-status)
+  (\"C-x g x\" . magit-checkout)
+  (\"C-x g c\" . magit-commit)
+  (\"C-x g p\" . magit-push)
+  (\"C-x g u\" . magit-pull)
+  (\"C-x g e\" . magit-ediff-resolve)
+  (\"C-x g r\" . magit-rebase-interactive))" #("(use-package with-editor
+  :config)" 0 24 (font-lock-fontified t fontified t font-lock-multiline t face org-block) 24 25 (font-lock-fontified t fontified t font-lock-multiline t face org-block) 25 34 (face org-block font-lock-multiline t fontified t font-lock-fontified t) 34 35 (face org-block font-lock-multiline t rear-nonsticky t fontified t font-lock-fontified t)) #("(use-package with-editor
+  :config)" 0 24 (fontified t font-lock-fontified t font-lock-multiline t face org-block) 24 25 (fontified t font-lock-fontified t font-lock-multiline t face org-block) 25 35 (face org-block font-lock-multiline t font-lock-fontified t fontified t)) "(use-package page-break-lines)" "(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook))" "(use-package exec-path-from-shell
+  :config
+  ;; Add GOPATH to shell
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-copy-env \"GOPATH\")
+    (exec-path-from-shell-copy-env \"PYTHONPATH\")
+    (exec-path-from-shell-initialize)))" "(defun shell-compile ()
+      (interactive)
+      (shell-command (concat \"python \" (buffer-file-name)))
+      (if (<= (* 2 (window-height)) (frame-height))
+          (enlarge-window 20)
+        (/ (frame-height) 2)))
+    (add-hook 'python-mode-hook
+              '(lambda ()
+                 (define-key (kbd \"C-c C-c\") 'shell-compile python-mode-map)))"))
+(setq-default session-file-alist '(("~/.emacs.d/myinit.org" 1296 1294 1 nil nil 1296 (overwrite-mode)) ("~/.emacs.d/elpa/dashboard-20170419.2358/dashboard-autoloads.el" 597 nil 1 nil nil 597 (overwrite-mode)) ("~/.emacs.d/elpa/page-break-lines-20161205.2251/page-break-lines-autoloads.el" 1782 nil 1 nil nil 1782 (overwrite-mode)) ("~/Documents/demos/py.py" 200 117 1 nil nil 200 (overwrite-mode)) ("~/Documents/myetc/keymap-emacs.txt" 2628 2595 1 nil nil 2628 (overwrite-mode)) ("~/Documents/demos/html.html" 134 287 1 nil nil 146 (overwrite-mode))))
+(setq-default file-name-history '("~/.emacs.d/elpa/dashboard-20170419.2358/dashboard-autoloads.el" "~/.emacs.d/elpa/page-break-lines-20161205.2251/page-break-lines-autoloads.el" #("/home/arpher/Documents/myetc/keymap-emacs.txt" 0 45 (ivy-index 0)) #("/home/arpher/Documents/demos/py.py" 0 34 (ivy-index 0)) #("/home/arpher/Documents/demos/html.html" 0 38 (ivy-index 0)) "~/.emacs.d/myinit.org"))
+(setq-default regexp-search-ring '("session" "hungry" "hung"))
+(setq-default command-history '((string-rectangle 894 1262 ";;") (string-rectangle 670 829 ";;") (package-install (quote dashboard)) (run-python "/usr/bin/python -i" t nil) (imenu (quote \.\.\.)) (run-python "/usr/bin/python -i py.py" t nil) (string-rectangle 6098 6176 ";;") (compile "make -k " nil) (string-rectangle 2531 2584 ";;") (describe-key "rt" 1 nil) (string-rectangle 2531 2609 ";;") (describe-key "\355" 1 nil) (describe-key [S-return] 1 nil) (describe-key "k" 1 nil) (describe-key [C-return] 1 nil) (describe-key "" 1 nil) (describe-key "\204" 1 nil) (describe-key "" 1 nil) (describe-key "" 1 nil) (string-rectangle 4510 4565 ";;") (dired-jump nil nil) (string-rectangle 1797 1888 ";;")))
+(setq-default compile-history '("make -k "))
+(setq-default counsel-git-grep-cmd-history '("git --no-pager grep --full-name -n --no-color -i -e '%s'"))
+(setq-default extended-command-history '(#("^package-install" 0 16 (ivy-index 2)) #("^dired-jump" 0 11 (ivy-index 0))))
+(setq-default ivy-history '(#("dashboard" 0 9 (ivy-index 0)) #("myinit.org" 0 10 (ivy-index 0)) #("py.py" 0 5 (ivy-index 0)) #("py py" 0 5 (ivy-index 0)) #("html.html" 0 9 (ivy-index 0))))
+(setq-default minibuffer-history '("/usr/bin/python -i" "/usr/bin/python -i py.py" ";;"))
+(setq-default occur-collect-regexp-history '("\\1"))
+(setq-default string-rectangle-history '(";;"))
+(setq-default swiper-history '(#("session" 0 7 (ivy-index 1)) #("hungry" 0 6 (ivy-index 1)) #("hung" 0 4 (ivy-index 1))))

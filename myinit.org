@@ -1,0 +1,1154 @@
+* 资源收藏
+- http://emacs-bootstrap.com/ 可以生成各种版本语言的.emacs.d config
+- https://emacsclub.github.io/html/org_tutorial.html Org教程
+
+* 快捷键
+#+BEGIN_SRC
+上下页               C-v  M-v
+方向键               C-b  C-n  C-p  C-f
+单词间移动           M-b  M-f
+光标文字显示         C-l
+
+行首行尾            C-a  C-e
+
+上一段下一段         M-a  M-e
+全文首尾             M-<  M->
+
+Forward 4 word       C-u 4 M-f
+Repeat 9 *           C-u 9 *
+Page down 9 lines    C-u 9 C-v
+This line to top     C-u 3 C-l 		     
+
+Disabled commond     C-x C-l n
+Remain 1 window      C-h k C-f
+                     C-x 1
+Delete current win   C-x 0		     
+Delete world         M-b M-d <DEL>
+Replace world        M-b M-d really
+Delete line end      C-k
+Delete <p> end       M-k
+
+Delete line          C-k C-k
+                     C-u 4 C-k
+
+Select all 	     C-x h
+Cut    		     C-w
+Copy		     M-w
+paste		     C-y
+
+Cut line             C-k C-k <move> C-y
+                     C-u 4 C-k <move> C-y
+					 Copy line            C-k C-k C-y <move> C-y
+                     C-u 4 C-k C-y <move> C-y
+
+Recover data         C-k C-k <move> C-k C-k C-y
+                             <backmove> C-k M-y
+Undo                 C-/
+
+open/new file        C-x C-f
+save file            C-x C-s
+list buffer          C-x  C-b  C-x 1
+switch buffer        C-x  b  bbbb.txt
+save all files       C-x  s
+
+Replace string       M-x repl s <return> bbbb
+                                <return> cccc
+								
+auto save file       #bbbb.c#
+recover file         C-x  C-f  bbbb.c
+                          M-x  recover-file <return> yes
+major mode switch    M-x  text-mode  <return>
+major model help     C-h  m
+
+auto return in .txt  M-x  auto-fill-mode <return>
+change return char   C-u  70  C-x  f
+                     put  cursor on line then M-q
+
+Search               C-s  C-s  <del>
+Search backward      C-r  C-s  <del>
+
+Mutple window        C-x  2
+  scroll other       C-M-v  C-M-S-v
+  switch cursor      C-x  o
+Open in anoter win   C-x  4  C-f  bbbb.c
+                     C-x  o
+
+Help                 C-h  ?
+ key info            C-h  k  C-p
+ function info	     
+ current func info   C-h  f  previous-line
+ key word info	     C-h  a  file
+ variable info       C-h  v  variable
+
+	info	     C-h  i  <return>
+
+
+copy-file	     M-x  copy-file  <return>
+
+
+开启行号	     M-x  linum-mode
+当前行上移            C-x C-t
+
+切换回原来的buffer    C-x <right>
+删除缓冲	     M-x kill-some-bufferx
+
+管理包		     M-x package-list-packages
+刷新包		     M-x package-refresh-content
+
+swiper
+    to first         M-<
+    to last	     M->
+
+myinit.org编辑
+  #+BEGIN_SRC 快捷   <s <tab> emacs-lisp
+  块内缩进等编辑     C-c '
+  缩进		    <down> <tab>
+  退出编辑模式	    C-c '
+
+macro编辑
+  开始              F3
+  结束		    F4
+  重复上一宏	    C-x e
+  
+全文缩进         C-M-\
+
+注释/反注释          M-;
+增加矩形注释         C-x r t
+取消矩形注释         C-x r k
+跳转到行内非空白    M-m
+上移一行           C-x C-t
+移动整体代码块      选中代码块后： 
+                   向左移动2个字符：C-u -2 C-x TAB
+                   向右移动4个字符：C-u 4 C-x TAB
+显示图片
+    格式 [[file:image.png]]
+    显示C-c C-x C-v 
+
+插入代码块快捷操作 <s+<Tab>
+
+全文查找 M-x find-grep
+
+显示关闭子标题内容
+  Tab 当前子标题内容显示和关闭
+  C-u Tab 全局显示和关闭
+#+END_SRC
+
+* DIRectory EDitor (dired) 快捷键
+#+BEGIN_SRC conf
+C-x d start up dired
+C (large C) copy 
+d mark for erase
+D delete right away
+e or f open file or directory
+g reread directory structure from file
+G change group permissions (chgrp)
+k delete line from listing on screen (don\'t actually delete)
+m mark with *
+n move to next line
+o open file in other window and go there
+C-o open file in other window but don\'t change there
+P print file
+q quit dired
+Q do query-replace in marked files
+R rename file
+u remove mark
+v view file content
+x delete files marked with D
+z compress file
+M-Del remove all marks (whatever kind)
+~ mark backup files (name~ files) for deletion
+# mark auto-save files (#name#) for deletion
+*/ mark directory with * (C-u * removes that mark again)
+= compare this file with marked file
+M-= compare this file with it's backup file
+! apply shell command to this file
+M-} change to the next file marked with * od D
+M-{ " previous "
+% d mark files described through regular expression for deletion
+% m " (with *)
++ create directory
+> changed to next dir
+< change to previous dir
+s toggle between sorting by name or date
+
+Maybe into this category also fits this command:
+M-x speedbar starts up a separate window with a directory view
+#+END_SRC
+* 使用笔记
+** 通过init.el myinit.org可以完成配置加载, 出错时重启
+** C-c C-c 失败时, rm -rf .emacs/elpa/org* 可解决
+** 导出HTML时默认只导出修改过的文件的处理
+导出HTML时默认只导出修改过的文件，如果想全部重新刷新导出一遍，可以修改配置init.el的导出配置，比如修改引入css文件名。这样，执行 =C-c C-e x p= 后，会全部导出HTML。
+
+* canceled
+#+BEGIN_SRC emacs-lisp
+
+  ;; (use-package org-bullets    ;; org-mode 美化
+  ;;   :ensure t
+  ;;   :config
+  ;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+  ;; (setq ido-enable-flex-matching t)  ;; NB匹配, 被swiper/ivy/counsel代替
+  ;; (setq ido-everywhere t)            ;; 打开文件时展示列表
+  ;; (ido-mode 1)
+
+;;;; flashes the cursor's line when you scroll
+;;  (use-package beacon
+;;    :ensure t
+;;    :config
+;;    (beacon-mode 1)
+;;    ;; (setq beacon-color "#666600")
+;;    )
+
+#+END_SRC
+
+
+#+RESULTS:
+
+* mypackage install
+#+BEGIN_SRC emacs-lisp
+
+(defvar mypackages
+  '(session
+    dashboard
+    projectile
+    counsel-projectile
+    neotree
+    emmet-mode
+    highlight-parentheses
+  ))
+
+(mapc #'(lambda (package)
+    (unless (package-installed-p package)
+      (package-install package)))
+      mypackages)
+
+(defconst private-dir  (expand-file-name "private" user-emacs-directory))
+(defconst temp-dir (format "%s/cache" private-dir)
+  "Hostname-based elisp temp directories")
+
+
+  (use-package try
+    :ensure t)
+
+
+  (defun load-if-exists (f)
+    "load the elisp file only if it exists and is readable"
+    (if (file-readable-p f)
+	(load-file f)))
+
+  (load-if-exists "~/.emacs.d/myfiles/auto-save.el")
+  (load-if-exists "~/.emacs.d/myfiles/tmp-test.el")
+
+#+END_SRC
+
+#+RESULTS:
+
+* defind open file keys
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "\e\em")
+		(lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
+  (global-set-key (kbd "\e\et")
+		(lambda () (interactive) (find-file "~/time/")))
+  (global-set-key (kbd "\e\es")
+		(lambda () (interactive) (find-file "~/scheduled/scheduled.org")))
+
+  (global-set-key (kbd "\e\ep")
+		(lambda () (interactive) (find-file "/var/www/")))
+
+  (global-set-key (kbd "\e\eb")
+		(lambda () (interactive) (find-file "~/blog/")))
+  (global-set-key (kbd "\e\el")
+		(lambda () (interactive) (find-file "~/blog/laravel")))
+
+  (global-set-key (kbd "\e\en")
+		(lambda () (interactive) (find-file "~/mine/")))
+
+  (global-set-key (kbd "\e\ee")
+		(lambda () (interactive) (find-file "~/org/note.org")))
+
+
+
+
+
+#+END_SRC
+
+#+RESULTS:
+| lambda | nil | (interactive) | (find-file ~/org/note.org) |
+
+* rebinding keys
+#+BEGIN_SRC emacs-lisp
+
+;; 移除旧的org-mode 绑定
+(define-key org-mode-map (kbd "C-k") nil)
+(define-key org-mode-map (kbd "C-M-j") nil)
+(define-key org-mode-map (kbd "C-j") nil)
+(define-key org-mode-map (kbd "C-<tab>") nil)
+(define-key org-mode-map (kbd "C-v") nil)
+(define-key org-mode-map (kbd "M-v") nil)
+(define-key org-mode-map (kbd "S-<return>") nil)
+
+;; c-mode
+;;(define-key c-mode-map (kbd "M-j") nil)
+
+;; 重新定义
+
+(global-set-key (kbd "C-w") 'forward-char)
+(global-set-key (kbd "M-p") 'backward-paragraph)
+(global-set-key (kbd "M-n") 'forward-paragraph)
+(global-set-key (kbd "C-<tab>") 'previous-buffer)
+(global-set-key (kbd "C-v") 'yank)
+(global-set-key (kbd "C-z") 'undo-tree-undo)
+
+;; 新建一行
+(defun my-newline nil  
+  "open new line belowe current line"  
+  (interactive)  
+  (end-of-line)  
+  (newline))
+(global-set-key (kbd "S-<return>") 'my-newline)
+
+;; 下一个单词
+(defun my-next-word nil  
+  "my next word"  
+  (interactive)  
+  (forward-word)  
+  (forward-word)
+  (backward-word)
+  )
+(global-set-key (kbd "M-w") 'my-next-word)
+
+;; 复制单词
+(defun my-copy-word nil  
+  "my copy word"
+  (interactive)  
+  (forward-word)  
+  (backward-word)
+  (push-mark)
+  (forward-word)  
+  (kill-ring-save (region-beginning)(region-end))
+)
+(global-set-key (kbd "C-M-w") 'my-copy-word)
+
+
+#+END_SRC
+* dashboard/neotree
+#+BEGIN_SRC emacs-lisp
+
+;; M-x package-install dashboard
+(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook))
+
+(setq dashboard-items '((recents  . 5)
+                        ))
+
+(global-set-key (kbd "\e\ed") 'dashboard-refresh-buffer)
+
+
+;; n next line ， p previous line。
+;; SPC or RET or TAB Open current item if it is a file. Fold/Unfold current item if it is a directory.
+;; g Refresh
+;; A Maximize/Minimize the NeoTree Window
+;; H Toggle display hidden files
+;; C-c C-n Create a file or create a directory if filename ends with a ‘/’
+;; C-c C-d Delete a file or a directory.
+;; C-c C-r Rename a file or a directory.
+;; C-c C-c Change the root directory.
+;; C-c C-p Copy a file or a directory.
+(require 'neotree)
+  (global-set-key [f9] 'neotree-toggle)
+  (setq neo-theme 'arrow)
+  (setq counsel-projectile-switch-project 'neotree-projectile-action)
+
+#+END_SRC
+
+#+RESULTS:
+* load/recentf/session
+#+BEGIN_SRC emacs-lisp
+
+  (setq inhibit-startup-message t)
+
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+  (global-auto-revert-mode 1)
+
+  (global-set-key (kbd "<f5>") 'revert-buffer)
+
+  (server-mode 1)
+
+  
+  ;; 打开最近文件
+  (require 'recentf)
+  (recentf-mode 1)
+  (setq recentf-max-menu-item 20)
+  (global-set-key (kbd "\e\er") 'recentf-open-files)
+
+  (setq initial-frame-alist (quote ((fullscreen . maximized))))  ;; 默认全屏
+
+;; 
+;; (if (display-graphic-p)
+;;     (progn
+;;       (setq initial-frame-alist
+;;             '(
+;;               (width . 106) ; chars
+;;               (height . 60) ; lines
+;;               ;;
+;;               ))
+;; 
+;;       (setq default-frame-alist
+;;             '(
+;;               (width . 106)
+;;               (height . 60)
+;;               ;;
+;;               ))))
+
+;; 启动回到原来的界面
+;;(require 'session)
+;;(add-hook 'after-init-hook 'session-initialize)
+;;(desktop-save-mode t)
+
+#+END_SRC
+* save
+#+BEGIN_SRC emacs-lisp
+;; 自动保存
+;;(add-to-list
+;; 'load-path 
+;; (expand-file-name "3rds" user-emacs-directory)) ;把3rds目录加到加载目录中
+
+(require 'auto-save)            ;; 加载自动保存模块
+(auto-save-enable)              ;; 开启自动保存功能
+(setq auto-save-slient t)       ;; 自动保存的时候静悄悄的
+
+(setq auto-save-default nil)    ;;不生成##文件
+
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.saves"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
+
+#+END_SRC
+* display
+#+BEGIN_SRC emacs-lisp
+;; 重置文字段落宽度
+;; Add left and right margins, when file is markdown or text.
+(defun center-window (window) ""
+  (let* ((current-extension (file-name-extension (or (buffer-file-name) "foo.unknown")))
+         (max-text-width 30)
+         (margin (max 0 (/ (- (window-width window) max-text-width) 2))))
+    (if (and (not (string= current-extension "org"))
+             (not (string= current-extension "txt")))
+        ;; Do nothing if this isn't an .md or .txt file.
+        ()
+      (set-window-margins window margin margin))))
+;; Adjust margins of all windows.
+(defun center-windows () ""
+  (walk-windows (lambda (window) (center-window window)) nil 1))
+;; Listen to window changes.
+(add-hook 'window-configuration-change-hook 'center-windows)
+
+;; 去掉换行的箭头
+(global-visual-line-mode 1)
+
+
+  (use-package atom-one-dark-theme
+    :ensure t
+    :config (load-theme 'atom-one-dark t))
+
+  (menu-bar-mode -1)
+  (global-set-key [f10] 'menu-bar-mode)         ;;打开/关闭菜单  
+
+  (tool-bar-mode -1)
+
+  (scroll-bar-mode -1)    ;;滚动条
+  
+  ;; 设置 M-x customize-group RET yascroll RET 
+  (load-if-exists "~/.emacs.d/myfiles/yascroll-el/yascroll.el")
+  (global-yascroll-bar-mode t)
+
+  (global-hl-line-mode t)
+
+  (global-linum-mode 1)           ;; 显示行号
+
+  (setq ring-bell-function 'ignore) ;; 去掉提示音
+
+  ;;(set-face-attribute 'default nil :height 146)  ;; 字体大小
+  (setq-default line-spacing 6)                  ;; 行高
+
+  ;;;设置标题栏显示文件的完整路径名  
+  ;; (setq frame-title-format  
+  ;;  '("%S" (buffer-file-name "%f"  
+  ;;   (dired-directory dired-directory "%b"))))
+
+
+;; 红色渐变显示括号
+(require 'highlight-parentheses)
+
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+
+(global-highlight-parentheses-mode t)
+
+;; 
+(setq linum-format "%d ")
+(setq linum-format "%4d \u2502 ")
+
+#+END_SRC
+
+#+RESULTS:
+: %4d │ 
+
+* ace-window/counsel/ivy/swiper/avy/ag
+#+BEGIN_SRC emacs-lisp
+
+  (defalias 'list-buffers 'ibuffer)              ;; 一直在找的buffer管理
+
+  (windmove-default-keybindings)                 ;; S-down window间方向键移动
+
+  (use-package ace-window                        ;; 多窗口C-x o 数字切换
+    :ensure t
+    :init
+    (progn
+      (global-set-key [remap other-window] 'ace-window)
+      (custom-set-faces
+       '(aw-leading-char-face
+         ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+      ))
+
+
+  ;; it looks like counsel is a requirement for swiper
+  (use-package counsel
+    :ensure t
+    :bind
+    (("M-y" . counsel-yank-pop)
+     :map ivy-minibuffer-map
+     ("M-y" . ivy-next-line)))  ;;yank 的NB扩展
+
+  ;; 浏览器C-c, emacs C-w后,將浏览器剪贴板放入M-y
+  (setq save-interprogram-paste-before-kill t)
+
+  (use-package ivy
+    :ensure t
+    :diminish (ivy-mode)
+    :bind (("C-x b" . ivy-switch-buffer))
+    :config
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t)
+    (setq ivy-display-style 'fancy))
+
+
+
+  (use-package swiper
+    :ensure try
+    :bind (("C-s" . swiper)
+           ("M-x" . counsel-M-x)
+           ("C-x C-f" . counsel-find-file))
+    :config
+    (progn
+      (ivy-mode 1)
+      (setq ivy-use-virtual-buffers t)
+      (setq ivy-display-style 'fancy)
+      ))
+
+
+
+  (use-package avy
+    :ensure t
+    :bind ("M-s" . avy-goto-char))
+
+  ;; search in files: ag-files
+  ;; install tricks: sudo apt install 
+  (use-package ag
+     :ensure t)
+
+#+END_SRC
+
+* proxjectile
+** man counsel-projectile
+;; C-c p f counsel-projectile-find-file
+;; C-c p d counsel-projectile-find-dir 
+;; C-c p b counsel-projectile-switch-to-buffer
+;; C-c p s s counsel-projectile-ag
+;; C-c p p counsel-projectile-switch-project  
+** man dir-mode
++ 新建目录
+** code
+#+BEGIN_SRC emacs-lisp
+(use-package projectile
+  :config
+  (setq projectile-known-projects-file
+        (expand-file-name "projectile-bookmarks.eld" temp-dir))
+  (setq projectile-completion-system 'ivy)
+  (projectile-global-mode))
+
+(use-package counsel-projectile
+  :config
+  (counsel-projectile-on))
+
+(use-package org-projectile
+  :bind (("C-c n p" . org-projectile:project-todo-completing-read)
+         ("C-c c" . org-capture))
+  :config
+  (progn
+    (setq org-projectile:projects-file 
+          "~/org-my/projects.org")
+    (setq org-agenda-files (append org-agenda-files (org-projectile:todo-files)))
+    (add-to-list 'org-capture-templates (org-projectile:project-todo-entry "p")))
+  :ensure t)
+
+#+END_SRC
+
+#+RESULTS:
+: t
+
+* magit
+#+BEGIN_SRC emacs-lisp
+(use-package magit
+  :config
+  (setq magit-completing-read-function 'ivy-completing-read))
+
+(use-package magit-popup)
+
+#+END_SRC
+
+#+RESULTS:
+
+* auto-complete/undo-tree/expand-region/dired-x
+#+BEGIN_SRC emacs-lisp
+;;  (use-package which-key
+;;    :ensure t 
+;;    :config
+;;    (which-key-mode))
+
+  (use-package auto-complete        ;; 已输过单词自动完成
+    :ensure t
+    :init
+    (progn
+      (ac-config-default)
+      (global-auto-complete-mode t)
+      ))
+
+  ;; visualize tree: C-x u
+  ;; undo: C-/ redo: C-?
+  (use-package undo-tree
+    :ensure t
+    :init
+    (global-undo-tree-mode))
+
+;;  (use-package hungry-delete
+;;    :ensure t
+;;    :config
+;;    (global-hungry-delete-mode))
+
+  (use-package expand-region
+    :ensure t
+    :config 
+    (global-set-key (kbd "C-o") 'er/expand-region))
+
+  (delete-selection-mode 1)          ;; 选中后输入会替换掉你选中部分
+  
+  (require 'dired-x)                 ;; C-x C-j 进入当前文件夹
+
+  (setq x-select-enable-clipboard t) ;;支持emacs和外部程序的粘贴
+
+  (setq default-tab-width 4)
+  (setq-default indent-tabs-mode nil) ; tab 改为插入空格
+  (setq c-basic-offset 4) ; c c++ 缩进4个空格
+  (setq c-default-style "linux"); 没有这个 { } 就会瞎搞
+
+#+END_SRC
+
+* custome edit
+#+BEGIN_SRC emacs-lisp
+
+;; 复制选区或复制一行
+(global-set-key "\M-k"
+(lambda ()
+  (interactive)
+  (if mark-active
+      (kill-ring-save (region-beginning)
+      (region-end))
+    (progn
+     (kill-ring-save (line-beginning-position)
+     (line-end-position))
+     (message "copied line")))))
+
+;; 复制新的一行
+(defun my-new-line nil  
+  "my function copied and pasted line"  
+  (interactive)  
+  (kill-ring-save (line-beginning-position)
+  (line-end-position))
+  (end-of-line)  
+  (newline)
+  (yank)
+  (message "copied and pasted line"))
+(global-set-key (kbd "C-M-k") 'my-new-line)
+
+  ;; 删除行内光标前文字
+(defun my-delete-line-left nil  
+  "my delete line left"  
+  (interactive)  
+  (push-mark)
+  (back-to-indentation)
+  (kill-region (point) (mark))
+  (message "deleted line left"))
+(global-set-key (kbd "M-<backspace>") 'my-delete-line-left)
+
+;; 删除行内光标后文字
+(defun my-delete-line-right nil  
+  "my delete line right"  
+  (interactive)  
+  (kill-line)
+  (message "deleted line right"))
+(global-set-key (kbd "M-<delete>") 'my-delete-line-right)
+
+;; 剪贴选区或剪贴一行
+(global-set-key "\C-k"
+(lambda ()
+  (interactive)
+  (if mark-active
+      (kill-region (region-beginning)
+      (region-end))
+  (progn
+     (kill-whole-line 1)
+     (message "killed line")))))
+
+;; 上移一行
+(defun my-up-line nil  
+  "my up line"  
+  (interactive)  
+  (kill-whole-line 1)
+  (beginning-of-line 0)
+  (yank)
+  (beginning-of-line 0)
+  (end-of-line)
+  (message "up line"))
+(global-set-key (kbd "C-<up>") 'my-up-line)
+
+;; 下移一行
+(defun my-down-line nil  
+  "my down line"  
+  (interactive)  
+  (kill-whole-line 1)
+  (beginning-of-line 2)
+  (yank)
+  (beginning-of-line 0)
+  (end-of-line)
+  (message "down line"))
+(global-set-key (kbd "C-<down>") 'my-down-line)
+
+;; % 括号间跳转
+(defun ar-match-paren (&optional arg)
+  "Go to the matching brace, bracket or parenthesis if on its counterpart."
+  (interactive "P")
+  (if arg
+      (self-insert-command (if (numberp arg) arg 1))
+    (cond ((eq 4 (car (syntax-after (point))))
+       (forward-sexp)
+       (forward-char -1))
+      ((eq 5 (car (syntax-after (point))))
+       (forward-char 1)
+       (backward-sexp))
+      (t (self-insert-command 1)))))
+(global-set-key [(%)] 'ar-match-paren)
+
+;; 隐藏打开函数
+(add-hook 'c-mode-common-hook
+  (lambda()
+    (local-set-key (kbd "C-c <right>") 'hs-show-block)
+    (local-set-key (kbd "C-c <left>")  'hs-hide-block)
+    (local-set-key (kbd "C-c <up>")    'hs-hide-all)
+    (local-set-key (kbd "C-c <down>")  'hs-show-all)
+    (hs-minor-mode t)))
+
+
+#+END_SRC
+
+#+RESULTS:
+| (lambda nil (local-set-key (kbd C-c <right>) (quote hs-show-block)) (local-set-key (kbd C-c <left>) (quote hs-hide-block)) (local-set-key (kbd C-c <up>) (quote hs-hide-all)) (local-set-key (kbd C-c <down>) (quote hs-show-all)) (hs-minor-mode t)) | ac-cc-mode-setup |
+
+* reveal.js
+#+BEGIN_SRC emacs-lisp
+
+  (use-package ox-reveal
+    :ensure ox-reveal)
+
+  (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+  (setq org-reveal-mathjax t)
+
+  (use-package htmlize
+    :ensure t)
+
+#+END_SRC
+* flycheck
+#+BEGIN_SRC emacs-lisp
+;;  (use-package flycheck
+;;    :ensure t
+;;    :init
+;;    (global-flycheck-mode t))
+
+#+END_SRC
+* yasnippet
+#+BEGIN_SRC emacs-lisp
+  (use-package yasnippet
+    :ensure t
+    :init
+    (yas-global-mode 1))
+
+#+END_SRC
+* org-capture
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-c c")
+		  'org-capture)
+
+  (setq org-todo-keyword-faces '(
+				 ("TODO" . (:foreground "steelBlue" :weight normal)) 
+				 ("DONE" . (:foreground "darkSlateGray" :weight normal)) ))
+
+  (defadvice org-capture-finalize 
+      (after delete-capture-frame activate)  
+    "Advise capture-finalize to close the frame"  
+    (if (equal "capture" (frame-parameter nil 'name))  
+	(delete-frame)))
+
+  (defadvice org-capture-destroy 
+      (after delete-capture-frame activate)  
+    "Advise capture-destroy to close the frame"  
+    (if (equal "capture" (frame-parameter nil 'name))  
+	(delete-frame)))  
+
+  (use-package noflet
+    :ensure t )
+  (defun make-capture-frame ()
+    "Create a new frame and run org-capture."
+    (interactive)
+    (make-frame '((name . "capture")))
+    (select-frame-by-name "capture")
+    (delete-other-windows)
+    (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
+      (org-capture)))
+
+#+END_SRC
+* ibuffer
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+ (setq ibuffer-saved-filter-groups
+       (quote (("default"
+                ("dired" (mode . dired-mode))
+                ("org" (mode . org-mode))
+                ("emacs" (or
+                          (name . "^\\*scratch\\*$")
+                          (name . "^\\*Messages\\*$")
+                          (name . "^\\*Backtrace\\*$")
+                          (name . "^\\*dashboard\\*$")))
+                ))))
+ (add-hook 'ibuffer-mode-hook
+           (lambda ()
+             (ibuffer-switch-to-saved-filter-groups "default")))
+
+#+END_SRC
+
+#+RESULTS:
+| lambda | nil | (ibuffer-switch-to-saved-filter-groups default) |
+
+* python
+#+BEGIN_SRC emacs-lisp
+  ;;;; http://tkf.github.io/emacs-jedi/latest/#configuration
+  ;;;; m-x package-install RET jedi RET
+  ;;;; M-x jedi:install-server RET
+  ;;;; 上一步安装时,不确定是否安装成功
+;;  (use-package jedi    ;; Python auto-completion
+;;    :ensure t
+;;    :init
+;;    (add-hook 'python-mode-hook 'jedi:setup)
+;;    (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+;;  (use-package elpy
+;;    :ensure t
+;;    :config 
+;;    (elpy-enable))
+;;;; 经测试,菜单加VirturalEnvs在其他如c环境也有,不需要
+
+#+END_SRC
+* web-mode/emmet-mode
+#+BEGIN_SRC emacs-lisp
+
+  ;; wrap tag: C-c C-e w
+  ;; commit M-;
+  ;; C-c C-n：放在HTML标签上，在标签间跳转。
+  ;; C-c C-f：放在HTML标签上，在标签折叠。
+  (use-package web-mode
+    :ensure t
+    :config
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (setq web-mode-engines-alist
+	  '(("django"    . "\\.html\\'")))
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-ac-sources-alist
+	  '(("css" . (ac-source-css-property))
+	    ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+  
+    (setq web-mode-enable-auto-closing t)
+    (setq web-mode-enable-auto-quoting t))
+
+
+  ;; a：a+href
+  ;; #q：div+id(q)
+  ;; .x：div+class(x)
+  ;; #q.x：div+id(q)+class(x)
+  (require 'emmet-mode)
+    (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+    (add-hook 'html-mode-hook 'emmet-mode)
+    (add-hook 'web-mode-hook 'emmet-mode)
+    (add-hook 'css-mode-hook  'emmet-mode)
+
+#+END_SRC
+
+* php-mode
+
+  sudo apt-get install php-elisp
+#+BEGIN_SRC emacs-lisp
+
+(add-to-list 'load-path "~/.emacs.d/myfiles/php-mode")
+(require 'php-mode)
+(autoload 'php-mode "php-mode" "Major mode for editing PHP code." t)
+(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+
+#+END_SRC
+
+#+RESULTS:
+  
+* org-mode
+#+BEGIN_SRC emacs-lisp
+;; 自动换行
+(add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+;; 语法高亮
+(setq org-src-fontify-natively t)
+;; 转化为markdown 导出markdown 
+;; M-x org-md-export-to-markdown
+;; C-c C-e m m
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+;; 图片宽度
+(setq org-image-actual-width '(600))
+#+END_SRC
+
+#+Results:
+: t
+
+* org代码注释
+# http://wenshanren.org/?p=327
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'org-structure-template-alist
+    '("lisp" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC" "<src lang=\"R\">\n?\n</src>"))
+(add-to-list 'org-structure-template-alist
+    '("php" "#+BEGIN_SRC php\n?\n#+END_SRC" "<src lang=\"R\">\n?\n</src>"))
+(add-to-list 'org-structure-template-alist
+    '("js" "#+BEGIN_SRC js\n?\n#+END_SRC" "<src lang=\"R\">\n?\n</src>"))
+#+END_SRC
+
+* open-terminal
+#+BEGIN_SRC emacs-lisp
+
+(defun my-open-terminal ()
+  "my-open-terminal"
+  (interactive)
+  (shell-command "gnome-terminal"))
+
+(global-set-key (kbd "M-z") 'my-open-terminal)
+
+#+END_SRC
+* evil
+#+BEGIN_SRC emacs-lisp
+
+;;(add-to-list 'load-path "~/.emacs.d/myfiles/evil")
+;;(require 'evil)
+;;(evil-mode -1)
+
+;;;;(setq evil-toggle-key "")	; remove default evil-toggle-key C-z, manually setup later
+;;(setq evil-want-C-i-jump nil)	; don't bind [tab] to evil-jump-forward
+
+;; remove all keybindings from insert-state keymap, use emacs-state when editing
+;;(setcdr evil-insert-state-map nil)
+    
+;; ESC to switch back normal-state
+;;(define-key evil-insert-state-map [escape] 'evil-normal-state)
+ 
+
+#+END_SRC
+* 字体
+#+BEGIN_SRC emacs-lisp
+;;;;(load-if-exists "~/.emacs.d/cnfonts/cnfonts-pkg.el")
+;;(load-if-exists "~/.emacs.d/cnfonts/cnfonts-ui.el")
+;;(load-if-exists "~/.emacs.d/cnfonts/cnfonts.el")
+;;(require 'cnfonts)
+;;;; 让 cnfonts 随着 Emacs 自动生效。
+;;(cnfonts-enable)
+;;;; 让 spacemacs mode-line 中的 Unicode 图标正确显示。
+;;(cnfonts-set-spacemacs-fallback-fonts)
+
+;;编辑字体及大小
+;;M-x cnfonts-edit-profile-without-ui  然后C-c C-c测试
+;;| cnfonts-increase-fontsize | 增大字号     |
+;;| cnfonts-decrease-fontsize | 减小字号     |
+
+
+
+;;中文与外文字体设置
+(defun set-font (english chinese english-size chinese-size)
+  (set-face-attribute 'default nil :font
+                      (format   "%s:pixelsize=%d"  english english-size))
+  (dolist (charset '(kana han symbol cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font) charset
+                      (font-spec :family chinese :size chinese-size))))
+
+(set-font   "WenQuanYi Zen Hei Mono" "WenQuanYi Zen Hei Mono" 17 17)
+#+END_SRC
+
+#+RESULTS:
+
+* ox-publish for blog
+#+BEGIN_SRC emacs-lisp
+;; C-c C-e P x     (org-publish)
+;; Prompt for a specific project and publish all files that belong to it. 
+;; C-c C-e P p     (org-publish-current-project)
+;; Publish the project containing the current file. 
+;; C-c C-e P f     (org-publish-current-file)
+;; Publish only the current file. 
+;; C-c C-e P a     (org-publish-all)
+;; Publish every project.
+
+;; 另一种生成html的方式
+;; M-x htmlize-buffer
+;; https://github.com/hniksic/emacs-htmlize
+(require 'ox-publish)
+
+(org-publish-all )
+;; http://orgmode.org/manual/Publishing-options.html#Publishing-options
+(setq org-html-postamble nil)        ;; 不显示创建日期
+(setq org-export-with-creator nil)   ;; 不显示emacs版本
+(setq org-html-validation-link nil)  ;; 不显示文章底部的Validate
+;; org转html换行 http://orgmode.org/manual/Export-settings.html#Export-settings
+(setq org-export-preserve-breaks t) 
+(setq org-html-doctype "html5")      ;; 设置导出为HTML5格式, 默认貌似是XML.
+(setq org-html-head-include-default-style nil)    ;;不显示默认的css
+(setq org-html-head-include-scripts nil)          ;;不显示默认的js
+
+ 
+(setq org-publish-project-alist
+      '(
+
+       ;; ... add all the components here (see below)...
+("scheduled"
+ :html-indent ""
+ :html-link-home "/scheduled/"
+ :html-link-up "../"
+ :html-head "
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1\">
+<link rel='stylesheet' media='screen and (max-width: 1100px)' href='/scheduled/src/css/doc-mobile.css' type='text/css'/>
+<link rel='stylesheet' media='screen and (min-width: 1100px)' href='/scheduled/src/css/doc-pc.css' type='text/css'/>
+"
+ :base-directory "~/scheduled/"
+ :base-extension "org"
+ :publishing-directory "/var/www/html/scheduled/"
+ :recursive t
+ :publishing-function org-html-publish-to-html
+ :headline-levels 4             ; Just the default for this project.
+ :auto-preamble t
+ :author "Bear Arpher"
+ :email "bearpher@gmail.com"
+ :auto-sitemap t                ; Generate sitemap.org automagically...
+ :sitemap-filename "index.org"  ; ... call it sitemap.org (it's the default)...
+ :sitemap-title "排程"          ; ... with title 'Sitemap'.
+ :sitemap-sort-files anti-chronologically
+ :sitemap-file-entry-format "%d %t"  ; "%d %t"时间+标题构成索引index.html
+;; :with-author nil             ;; 不显示作者
+ :language "zh-CN"
+ )
+
+("blog" :components ("blog-notes" "blog-static"))
+
+("time"
+ :html-link-home "/time/"
+ :html-link-up "../"
+ :html-head "<link rel=\"stylesheet\"
+                         href=\"/time/src/css/gongzhitaao2.css\"
+                         type=\"text/css\"/>"
+ :base-directory "~/time/"
+ :base-extension "org"
+ :publishing-directory "/var/www/html/time/"
+ :recursive t
+ :publishing-function org-html-publish-to-html
+ :headline-levels 4             ; Just the default for this project.
+ :auto-preamble t
+ :author "Bear Arpher"
+ :email "bearpher@hotmail.com"
+ :auto-sitemap t                ; Generate sitemap.org automagically...
+ :sitemap-filename "index.org"  ; ... call it sitemap.org (it's the default)...
+ :sitemap-title "日历"          ; ... with title 'Sitemap'.
+ :sitemap-sort-files anti-chronologically
+ :sitemap-file-entry-format "%t"
+;; :with-author nil             ;; 不显示作者
+ :language "zh-CN"
+ )
+
+("blog-notes"
+ :html-link-home "/blog/"
+ :html-link-up "../"
+ :html-head "<link rel=\"stylesheet\"
+                         href=\"/blog/src/css/simple.css\"
+                         type=\"text/css\"/>"
+ :base-directory "~/blog/"
+ :base-extension "org"
+ :publishing-directory "/var/www/html/blog/"
+ :recursive t
+ :publishing-function org-html-publish-to-html
+ :headline-levels 4             ; Just the default for this project.
+ :auto-preamble t
+ :author "Bear Arpher"
+ :email "bearpher@gmail.com"
+ :auto-sitemap t                ; Generate sitemap.org automagically...
+ :sitemap-filename "index.org"  ; ... call it sitemap.org (it's the default)...
+ :sitemap-title "笔记"         ; ... with title 'Sitemap'.
+ :sitemap-sort-files anti-chronologically
+ :sitemap-file-entry-format "%t"
+;; :with-author nil             ;; 不显示作者
+ :language "zh-CN"
+ )
+
+("blog-static"
+ :base-directory "~/blog/"
+ :base-extension "png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf|\\css"
+ :publishing-directory "/var/www/html/blog/"
+ :recursive t
+ :publishing-function org-publish-attachment
+ )
+
+
+
+      ))
+
+#+END_SRC
+
+* ox-publish for pdf
+;; https://emacs.stackexchange.com/questions/14455/exporting-org-to-pdf-latexerror
+;; sudo apt-get install texlive-latex-extra
+;; 导出html,然后在chrome导出为pdf
+
+;;在org文件添加
+;;#+LATEX_HEADER: \usepackage{xeCJK}
+;;#+LATEX_HEADER: \setCJKmainfont{微软雅黑}
+;;然后执行 C-c C-e l p
+#+BEGIN_SRC emacs-lisp
+(setq org-latex-pdf-process '("xelatex -shell-escape -interaction nonstopmode %f"
+                              "xelatex -shell-escape -interaction nonstopmode %f"))
+#+END_SRC
+
