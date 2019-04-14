@@ -58,10 +58,8 @@
 (global-set-key (kbd "\e\ep")
               (lambda () (interactive) (find-file "/var/www/")))
 
-(global-set-key (kbd "\e\eb")
-              (lambda () (interactive) (find-file "~/blog/")))
-(global-set-key (kbd "\e\el")
-              (lambda () (interactive) (find-file "~/blog/laravel")))
+(global-set-key (kbd "\e\ew")
+              (lambda () (interactive) (find-file "~/wiki/")))
 
 (global-set-key (kbd "\e\en")
               (lambda () (interactive) (find-file "~/mine/")))
