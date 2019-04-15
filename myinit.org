@@ -175,6 +175,25 @@ Maybe into this category also fits this command:
 M-x speedbar starts up a separate window with a directory view
 #+END_SRC
 * 使用笔记
+** emacs can't use Chinese any more
+uninstall and install again
+After use bleachbit clean some stuff on my computer,My Emacs can't write Chinese any more.Then I checked the bleachbit,maybe because I deleted some files about font
+Someone said uninstall and install fcitx can work,then I opearte like this
+: sudo apt-get --purge remove fcitx-pinyin
+: sudo apt-get install fcitx-modules fcitx-bin fcitx-data fcitx-googlepinyin
+: sudo apt install im-config  # switch fcitx
+and then,still no't work
+
+Because of can't fix it now,for the time being the solution is =M-\= ,to use Emacs own font switch.
+
+** Solution to no answer to write Chinese in Emacs
+
+spend one morning and half afternoon on emacs spell Chinese toggle proplem,
+Yes,spend one day on this proplem,finally no answer to it.So my solution is as following:
+these days omit this problem,just collect stuff on my ubuntu laptop;
+Till 2018-01-08,think out the company name and registe my first componey on Tencent zhongchuang space.
+
+https://segmentfault.com/a/1190000008063732
 ** 通过init.el myinit.org可以完成配置加载, 出错时重启
 ** C-c C-c 失败时, rm -rf .emacs/elpa/org* 可解决
 ** 导出HTML时默认只导出修改过的文件的处理
@@ -249,9 +268,6 @@ M-x speedbar starts up a separate window with a directory view
   (global-set-key (kbd "\e\em")
 		(lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
 
-  (global-set-key (kbd "\e\es")
-		(lambda () (interactive) (find-file "~/scheduled/scheduled.org")))
-
   (global-set-key (kbd "\e\ep")
 		(lambda () (interactive) (find-file "/var/www/")))
 
@@ -261,8 +277,6 @@ M-x speedbar starts up a separate window with a directory view
   (global-set-key (kbd "\e\ei")
 		(lambda () (interactive) (find-file "~/mine/")))
 
-  (global-set-key (kbd "\e\ee")
-		(lambda () (interactive) (find-file "~/org/note.org")))
 
 
 

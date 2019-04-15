@@ -50,8 +50,7 @@
 
 (global-set-key (kbd "\e\em")
               (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
-(global-set-key (kbd "\e\et")
-              (lambda () (interactive) (find-file "~/time/")))
+
 (global-set-key (kbd "\e\es")
               (lambda () (interactive) (find-file "~/scheduled/scheduled.org")))
 
@@ -61,7 +60,7 @@
 (global-set-key (kbd "\e\ew")
               (lambda () (interactive) (find-file "~/wiki/")))
 
-(global-set-key (kbd "\e\en")
+(global-set-key (kbd "\e\ei")
               (lambda () (interactive) (find-file "~/mine/")))
 
 (global-set-key (kbd "\e\ee")
