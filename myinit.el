@@ -51,9 +51,6 @@
 (global-set-key (kbd "\e\em")
               (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
 
-(global-set-key (kbd "\e\es")
-              (lambda () (interactive) (find-file "~/scheduled/scheduled.org")))
-
 (global-set-key (kbd "\e\ep")
               (lambda () (interactive) (find-file "/var/www/")))
 
@@ -62,9 +59,6 @@
 
 (global-set-key (kbd "\e\ei")
               (lambda () (interactive) (find-file "~/mine/")))
-
-(global-set-key (kbd "\e\ee")
-              (lambda () (interactive) (find-file "~/org/note.org")))
 
 ;; 移除旧的org-mode 绑定
 (define-key org-mode-map (kbd "C-k") nil)
